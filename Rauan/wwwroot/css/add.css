@@ -1,0 +1,83 @@
+
+.main > form{/*----------------------form-------------------*/
+  width: 100%;
+  padding: 50px 8%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+  /*justify-form: space-between;*/
+  outline: 1px solid;
+}
+
+form > h3{
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+form > section{
+  width: 100%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.sect-left, .sect-middle, .sect-right{
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+}
+.sect-middle{
+  margin: 0 100px;
+}
+
+.sect-left > label{
+  width: 300px;
+  color: #004B65;
+}
+.sect-left input, .sect-middle input, .sect-left select, .sect-right input {
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid #90A8D1;
+}
+.sect-right input{
+  padding: 7px;
+  color: transparent;
+}
+
+.sect-left input:focus,
+.sect-middle input:focus,
+.sect-right input:focus{
+  outline: 2px solid #FF3D28;
+  border-color: transparent;
+}
+
+.sect-right > img{
+  width: 100%;
+  height: 300px;
+  background-color: #90A8D1;
+  border-radius: 15px;
+  border: none;
+  /*margin-top: 20px;*/
+}
+
+

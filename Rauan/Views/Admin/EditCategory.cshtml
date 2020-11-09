@@ -1,0 +1,18 @@
+﻿@model Rauan.DbData.Category
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<link rel="stylesheet" href="~/css/add.css">
+
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="Admin" asp-action="EditCategory" class="form-group">
+            <h3>Изменить название категорию:</h3>
+            <input asp-for="Id" type="hidden"><br />
+            <label>Название<input asp-for="Name" class="form-control"></label><br />
+            <input class="btn btn-success" type="submit" value="Изменить">
+        </form>
+
+    </div>
+</div>

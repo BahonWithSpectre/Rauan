@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "ListCategory";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@model IQueryable<Rauan.DbData.Category>
+
+
+<tr><td colspan="5">Список Категории</td></tr>
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Подкатегории</th>
+    <th>Изменить</th>
+    <th>Удалить</th>
+</tr>
+@foreach (var x in Model)
+{
+    <tr>
+        <td>@x.Id</td>
+        <td class="ctname">@x.Name</td>
+        <td><a href="#!" id="@x.Name" class="podcat">Подкатегории</a></td>
+        <td><a href="~/Admin/EditCategory/@x.Id">Изменить</a></td>
+        <td><a href="~/Admin/DeleteCategory/@x.Id">Удалить</a></td>
+        <td class="preloader pct-preloader"></td>
+    </tr>
+}
+<script>
+    $('.podcat').click(function (e) {
+        e.preventDefault();
+        $('#pctlist').css('opacity', '1');
+        $(this).parent().parent().children('.pct-preloader').css('display', 'block');
+
+        //alert($(this).parent().parent().children('td:nth-child(2)').text());
+        //alert($('.pctname').text());
+        var name = $(this).attr("id");
+        name=encodeURIComponent(name);
+        $('#pctlist').load('@Url.Action("ListPodCategory", "Admin")?ctname=' + name);
+
+    });
+
+
+
+</script>

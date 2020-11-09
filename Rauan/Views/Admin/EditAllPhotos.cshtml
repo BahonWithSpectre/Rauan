@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Rauan.DbData.ProductImage>
+
+@{
+    ViewData["Title"] = "EditAllPhotos";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<a class="btn btn-default" href="/Admin/EditProduct/@ViewBag.Id">Назад к товару</a>
+<h2><span>товар</span> - @ViewBag.Name</h2>
+
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Фото
+            </th>
+            <th>Изменить фото</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="/ProductImages/@item.Url" style="height:200px;"/>
+            </td>
+            <td>
+                <div class="row">
+                    <form asp-action="EditAllPhotos" enctype="multipart/form-data" class="form-group">
+                        <div class="col-md-5">
+                            <input name="Id" value="@item.Id" type="hidden" />
+                            <input name="img" type="file" class="form-control" />
+                        </div>
+                        <div class="col-md-5">
+                            <input type="submit" value="Изменить фото" class="btn btn-warning" />
+                        </div>
+                    </form>
+
+                </div>
+                
+            </td>
+            <td>
+                
+                <a class="btn btn-danger" href="/Admin/DeleteAllPhotos/@item.Id">Удалить фото</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,78 @@
+﻿@model Rauan.ViewModels.ShopMenuViewModel;
+
+<link rel="stylesheet" href="~/css/shop-menu.css">
+
+<content>
+    <form class="sect-search">
+        <a href="shop.html" class="shop">Магазин</a>
+        <input type="text" class="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="sect-nav">
+        <ul>
+            @foreach (var p in Model.Categories)
+            {
+                <li><a href="~/Store/ShopMenu/@p.Id?page=1">@p.Name</a></li>
+            }
+        </ul>
+    </div>
+    <div class="sect-cont">
+        <div class="sect-nas form-group" >
+            <a href="~/Store/Shop">Магазин</a>
+            <a href="~/Store/ShopMenu/@ViewBag.Id?page=1"><i class="fas fa-arrow-right"></i>@ViewBag.Name</a>
+            <a>| Сортировка по</a>
+            <select class="form-control">
+                <option>По возрастанию цен</option>
+                <option>По убыванию цен</option>
+            </select>
+        </div>
+        <div class="tovars">
+            @foreach (var t in Model.Products)
+            {
+                <div class="tovar">
+                    <a href="~/Store/Details/@t.Id" class="tov-img">
+                        <img src="~/PublicImages/@t.PublicImage" alt="">
+                    </a>
+                    <a href="~/Store/Details/@t.Id" class="tovar-name">@t.Name</a>
+                    <div class="price">
+                        <p>Цена<br /><span>@t.Price тг</span></p>
+                        <p>Мин.Заказ<br /><span>@t.MinPay</span></p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="sect-pages">
+            @if (Model.Pager.CurrentPage > 1)
+            {
+                <a href="~/Store/ShopMenu/@ViewBag.Id?page=@(Model.Pager.CurrentPage - 1)" class="prev @*page-passive*@"><i class="fas fa-arrow-left"></i>prev</a>
+            }
+
+            @for (var pg = Model.Pager.StartPage; pg <= Model.Pager.EndPage; pg++)
+            {
+
+                if (pg == ViewBag.Page)
+                {
+                    <a href="~/Store/ShopMenu/@ViewBag.Id?page=@pg" class="page-act">@pg</a>
+                }
+                else
+                {
+                    <a href="~/Store/ShopMenu/@ViewBag.Id?page=@pg">@pg</a>
+                }
+            }
+
+            @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+            {
+                <a href="~/Store/ShopMenu/@ViewBag.Id?page=@(Model.Pager.CurrentPage + 1)" class="next">next<i class="fas fa-arrow-right"></i></a>
+            }
+
+        </div>
+    </div>
+</content>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.page-act, .nas-active').on('click', function (e) {
+            e.preventDefault();
+        })
+    })
+</script>

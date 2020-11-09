@@ -1,0 +1,19 @@
+﻿@model Rauan.DbData.Category
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<link rel="stylesheet" href="~/css/add.css">
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Admin" asp-action="AddCategory" class="form-group">
+            <h3>Добавить новый Категорию</h3>
+            <label>Имия<input asp-for="Name" type="text" placeholder="text..." class="form-control"></label><br />
+            <input type="submit" value="Создать категория" class="btn btn-success">
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+</script>

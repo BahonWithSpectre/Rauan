@@ -1,0 +1,150 @@
+@import url("const.css");
+
+
+/*-------------------CONTENT-------------------------------------*/
+
+.main > content{
+	width: 100%;
+	padding: 0;
+}
+
+.sect-h{
+	text-align: center;
+	padding: 50px;
+	margin-top: 20px;
+}
+.sect-h > h1{
+	font-size: 64px;
+	margin-bottom: 20px;
+}
+.sect-h > p{
+	width: 65%;
+	font-size: 20px;
+	margin: 0 auto;
+}
+.sect-cont{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	padding: 0 30px;
+	border-top: 1px solid #90A8D1;
+}
+.sect-cont > img{
+	width: 300px;
+	height: 300px;
+	/*background-color: #90A8D1;*/
+	margin: 25px;
+}
+.sect-text{
+	width: 50%;
+	margin: 0 20px;
+}
+.sect-text > h2{
+	font-size: 40px;
+	margin: 20px 0;
+}
+.sect-text > p{
+	line-height: 20px;
+}
+.sect-text > a.more{
+	display: block;
+	width: 150px;
+	background-color: #118CE9;
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	padding: 15px;
+	margin: 20px 0;
+	border-radius: 25px;
+	-webkit-transition: 0.5s;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+}
+
+
+/*-------------------FOOTER-------------------------------------*/
+
+@media  (min-width: 1367px){
+}
+
+@media  (max-width: 1024px){
+	
+}
+@media  (max-width: 768px){
+	*{
+		font-size: 14px;
+	}
+	.right > .city{
+		margin-right: 10px;
+		padding-right: 10px;
+	}
+	.right i{
+		font-size: 20px;
+	}
+	.sect-h > p{
+		width: 100%;
+	}
+	.sect-cont > img{
+		width: 250px;
+		height: 250px;
+		margin: 15px;
+	}
+}
+@media  (max-width: 425px){
+	.main > header{
+		display: none;
+	}
+	.mob-menu{
+		display: block;
+	}
+	.mob-header > i.fa-bars{
+		display: block;
+	}
+	.sect-cont{
+		-webkit-flex-direction: column;
+		-moz-flex-direction: column;
+		-ms-flex-direction: column;
+		-o-flex-direction: column;
+		flex-direction: column;
+		-ms-align-items: center;
+		align-items: center;
+		padding: 0;
+	}
+	.sect-h{
+		padding: 50px 20px;
+	}
+	.sect-h > h1{
+		font-size: 32px;
+		margin-bottom: 10px;
+	}
+	.sect-h > p{
+		font-size: 16px;
+	}
+	.sect-cont > *{
+		width: 260px;
+	}
+	.sect-cont > img{
+		margin: 0;
+	}
+	.sect-text > h2{
+		font-size: 20px;
+		text-align: center;
+	}
+	.sect-text > p{
+		font-size: 14px;
+	}
+	.sect-text > a.more{
+		margin: 20px auto;
+		padding: 10px 15px;
+	}
+	
+}
+@media  (max-width: 375px){
+}
+@media  (max-width: 320px){
+}

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+@model Rauan.ViewModels.RegisterModel
+<link rel="stylesheet" href="~/css/regist.css">
+
+<content>
+    <form class="vhod" method="post">
+        <h2>Регистрация</h2>
+        <input type="text" asp-for="Email" placeholder="Ваше имя" required>
+        <span asp-validation-for="Email"></span>
+        <input type="text" asp-for="PhoneNumber" placeholder="Ваш номер" required>
+        <input type="password" asp-for="Password" placeholder="Придумайте пароль" required>
+        <span asp-validation-for="PasswordConfirm"></span>
+        <input asp-for="PasswordConfirm" placeholder="Повторите пароль" required />
+        <span asp-validation-for="PasswordConfirm"></span>
+        <button type="submit">Регистрация</button>
+    </form>
+</content>

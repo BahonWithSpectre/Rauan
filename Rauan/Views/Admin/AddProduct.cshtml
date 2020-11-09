@@ -1,0 +1,86 @@
+﻿@model Rauan.DbData.Product
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<link rel="stylesheet" href="~/css/add.css">
+
+<form asp-controller="Admin" asp-action="AddProduct" enctype="multipart/form-data">
+    <h3>Добавить новый продукт</h3>
+    <section>
+        <div class="sect-left">
+            <label>Name<input asp-for="Name"  placeholder="text..."></label>
+            <label>FirstInfo<input asp-for="FirstInfo"  placeholder="text..."></label>
+            <label>Price<input asp-for="Price"  placeholder="number..."></label>
+            <label>MinPay<input asp-for="MinPay"  placeholder="number..."></label>
+
+            @*<label>
+                CategoryId
+                <select id="ctmodel" name="ctmodel">
+                    @foreach (var c in ViewBag.Category)
+                    {
+                        <option value="@c.Name">@c.Name</option>
+                    }
+                </select>
+            </label>*@
+            <label>
+                Под Категория
+                <select @*id="pctmodel"*@ name="pctmodel">
+                    @foreach (var c in ViewBag.pc)
+                    {
+                        <option value="@c.Name">@c.Name</option>
+                    }
+                </select>
+            </label>
+        </div>
+        <div class="sect-middle">
+            <label>Info1<input asp-for="Info1" placeholder="text..."></label>
+            <label>Info2<input asp-for="Info2" placeholder="text..."></label>
+            <label>Info3<input asp-for="Info3" placeholder="text..."></label>
+            <label>Info4<input asp-for="Info4" placeholder="text..."></label>
+            <label>Info5<input asp-for="Info5" placeholder="text..."></label>
+            <label>Info6<input asp-for="Info6" placeholder="text..."></label>
+            <label>Info7<input asp-for="Info7" placeholder="text..."></label>
+            <label>Info8<input asp-for="Info8" placeholder="text..."></label>
+        </div>
+        <div class="sect-right">
+            
+                <label>PublicImage<input onchange="readURL(this);" name="PublicImg" type="file" multiple accept="jpg/png"></label>
+                <img id="blah" src="" alt="">
+
+        </div>
+    </section>
+    <br />
+    <button type="submit">Добавить товар</button>
+</form>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#ctmodel').change(function () {
+            var name = $('#ctmodel').val();
+            name=encodeURIComponent(name);
+            $('#pctmodel').load('@Url.Action("PodCategory", "Admin")?ctmodel=' + name);
+        });
+
+        $('.sect-right input[type="file"]').change(function () {
+            $(this).css('color', '#004B65');
+        });
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width('400px')
+                    .height('400px');
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>

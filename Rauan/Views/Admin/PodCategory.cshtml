@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "PodCategory";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@model IQueryable<Rauan.DbData.Pod_Category>
+
+@foreach (var c in Model)
+{
+    <option value="@c.Name">@c.Name</option>
+}

@@ -1,0 +1,39 @@
+﻿@model Rauan.DbData.Banner
+
+@{
+    ViewData["Title"] = "EditBanner";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Edit Banner</h2>
+
+<div>
+    <h4>Banner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt style="display:none;">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd style="display:none;">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+        <dd style="display:none;">
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+        <dd>
+            <input type="file" name="banner"/>
+            <br />
+            <img src="/banner/@Model.Url" />
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+    </dl>
+</div>

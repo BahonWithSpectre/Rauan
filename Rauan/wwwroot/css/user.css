@@ -1,0 +1,150 @@
+@import url("const.css");
+
+/*-------------------CONTENT-------------------------------------*/
+
+.main > content{
+	width: 100%;
+	padding-top: 70px;
+	padding-bottom: 50px;
+	/*margin-bottom: 400px;*/
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+}
+.vhod{
+	width: 40%;
+	padding: 25px 50px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	background-color: #fff;
+	border: 1px solid #90A8D1;
+}
+.vhod > div {
+    text-align: center;
+}
+.vhod > div > ul {
+    list-style: none;
+}
+.vhod > div > ul > li {
+    color: red !important;
+}
+.vhod > *{
+	margin-bottom: 25px;
+}
+.vhod > h2{
+	font-size: 30px;
+}
+.vhod:first-child > h2{
+	text-align: center;
+}
+.vhod > input{
+	padding: 15px;
+	border-radius: 5px;
+	border: none;
+	border: 1px solid #90A8D1;
+}
+.vhod > input:focus{
+	outline: 2px solid #FF3D28;
+}
+.vhod > button{
+	background-color: #118CE9;
+	color: #fff;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 5px;
+	border-color: transparent;
+}
+.vhod > a{
+	display: block;
+	text-decoration: none;
+	background-color: #118CE9;
+	color: #fff;
+	text-align: center;	
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 5px;
+	border-color: transparent;
+}
+.vhod > button:focus{
+	border: 2px solid #FF3D28;
+	border-radius: 0;
+	outline: none;
+}
+
+
+/*-------------------FOOTER-------------------------------------*/
+
+
+
+@media  (min-width: 1367px){
+}
+
+@media  (max-width: 1024px){
+	
+	.vhod{
+		width: 45%;
+		padding: 25px;
+	}
+}
+@media  (max-width: 768px){
+	*{
+		font-size: 14px;
+	}
+	.right > .city{
+		margin-right: 10px;
+		padding-right: 10px;
+	}
+	.right i{
+		font-size: 20px;
+	}
+	.main > content{
+		padding-left: 6%;
+		padding-right: 6%;
+	}
+	.vhod > h2{
+		font-size: 20px;
+	}
+	.vhod > input, .vhod > button{
+		padding: 10px 15px;
+	}
+}
+@media  (max-width: 425px){
+	.main > header{
+		display: none;
+	}
+	.mob-menu{
+		display: block;
+	}
+	.mob-header > i.fa-bars{
+		display: block;
+	}
+	.main > content{
+		-webkit-flex-direction: column;
+		-moz-flex-direction: column;
+		-ms-flex-direction: column;
+		-o-flex-direction: column;
+		flex-direction: column;
+	}
+	.main > footer{
+		padding: 10px 6%;
+	}
+	.vhod{
+		width: 100%;
+		margin-bottom: 20px;
+	}
+}
+@media  (max-width: 375px){
+}
+@media  (max-width: 320px){
+}

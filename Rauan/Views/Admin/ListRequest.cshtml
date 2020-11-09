@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "ListRequest";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@model IQueryable<Rauan.DbData.Request>
+
+
+<caption>Список Заявок</caption>
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>PhoneNumber</th>
+    <th>Description</th>
+    <th>DateTime</th>
+</tr>
+@foreach (var x in Model)
+{
+    <tr>
+        <td>@x.Id</td>
+        <td>@x.Name</td>
+        <td>@x.PhoneNumber</td>
+        <td>@x.Description</td>
+        <td>@x.DateTime</td>
+    </tr>
+}

@@ -1,0 +1,23 @@
+﻿@model Rauan.DbData.Pod_Category
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<link rel="stylesheet" href="~/css/add.css">
+
+<form asp-controller="Admin" asp-action="AddPodCategory">
+    <h3>Добавить новый PodCategory</h3>
+    <label>
+        CategoryId
+        <select name="ctmodel">
+            @foreach (var c in ViewBag.Category)
+            {
+                <option value="@c.Name">@c.Name</option>
+            }
+        </select>
+    </label><br />
+    <label>Name<input asp-for="Name" type="text" placeholder="text..."></label><br />
+    <input type="submit" value="Add PodCategory">
+</form>
+
+<script type="text/javascript">
+</script>

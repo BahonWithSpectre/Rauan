@@ -1,0 +1,93 @@
+﻿@model Rauan.DbData.Product
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<link rel="stylesheet" href="~/css/add.css">
+
+<form asp-controller="Admin" asp-action="EditProductMain" enctype="multipart/form-data">
+    <h3>Редактировать продукт @Model.Name</h3>
+    <section>
+        <div class="sect-left">
+            <input name="Id" type="hidden" value="@Model.Id">
+            <label>Name<input asp-for="Name" type="text" value="@Model.Name"></label>
+            <label>FirstInfo<input asp-for="FirstInfo" type="text" value="@Model.FirstInfo"></label>
+            <label>Price<input asp-for="Price" type="number" value="@Model.Price"></label>
+            <label>MinPay<input asp-for="MinPay" type="number" value="@Model.MinPay"></label>
+
+            <label>
+                CategoryId
+                <select id="ctmodel" name="ctmodel">
+                    @foreach (var c in ViewBag.Category)
+                    {
+                        <option value="@c.Name">@c.Name</option>
+                    }
+                </select>
+            </label>
+            <label>
+                PodCategoryId
+                <select id="pctmodel" name="pctmodel">
+                    @foreach (var c in ViewBag.pc)
+                    {
+                        <option value="@c.Name">@c.Name</option>
+                    }
+                </select>
+            </label>
+        </div>
+        <div class="sect-middle">
+            <label>Info1<input asp-for="Info1" type="text" value="@Model.Info1"></label>
+            <label>Info2<input asp-for="Info2" type="text" value="@Model.Info2"></label>
+            <label>Info3<input asp-for="Info3" type="text" value="@Model.Info3"></label>
+            <label>Info4<input asp-for="Info4" type="text" value="@Model.Info4"></label>
+            <label>Info5<input asp-for="Info5" type="text" value="@Model.Info5"></label>
+            <label>Info6<input asp-for="Info5" type="text" value="@Model.Info6"></label>
+            <label>Info7<input asp-for="Info5" type="text" value="@Model.Info7"></label>
+            <label>Info8<input asp-for="Info5" type="text" value="@Model.Info8"></label>
+        </div>
+        <div class="sect-right">
+            @if (Model.PublicImage != null)
+            {
+                <label>PublicImage<input onchange="readURL(this);" name="PublicImg" type="file" multiple accept="jpg/png"></label>
+                <img id="blah" src="~/PublicImages/@Model.PublicImage" alt="">
+            }
+            else
+            {
+                <label>PublicImage<input onchange="readURL(this);" name="PublicImg" type="file" multiple accept="jpg/png"></label>
+                <img id="blah" src="" alt="">
+            }
+        </div>
+    </section>
+    <br />
+    <button type="submit">Сохранить изменение</button>
+</form>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#ctmodel').change(function () {
+            var name = $('#ctmodel').val();
+            name=encodeURIComponent(name);
+            $('#pctmodel').load('@Url.Action("PodCategory", "Admin")?ctmodel=' + name);
+        });
+
+        $('.sect-right input[type="file"]').change(function () {
+            $(this).css('color', '#004B65');
+        });
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width('400px')
+                    .height('400px');
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>

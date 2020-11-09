@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Rauan.DbData.Pod_Category>
+@{
+    ViewData["Title"] = "PodCatList";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<p>список под категорий - <h2>@ViewBag.Cat</h2></p>
+<table class="table table-bordered">
+    <tr style="color:white!important; background-color: dodgerblue">
+        <td style="color:white!important;">Название Под Категорий</td>
+        <td style="color:white!important;">Настройки</td>
+    </tr>
+
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.Name</td>
+                <td>
+                    <a href="/Admin/EditPodCategory/@d.Id" class="btn btn-default">Редактировать</a>
+                    |
+                    <a class="btn btn-danger" href="/Admin/DeletePodCategory/@d.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,302 @@
+﻿@model Rauan.ViewModels.DetailsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<link rel="stylesheet" href="~/css/edit.css">
+<link rel="stylesheet" type="text/css" href="~/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="~/slick/slick-theme.css" />
+
+<content>
+    <div class="sect-tovar">
+        <a href="~/Admin/ListProduct">Назад к списке товаров</a><br />
+        <div class="tov-vid">
+            <div class="tov-slider">
+                <div class="mySlides">
+                    <img src="~/PublicImages/@Model.Products.PublicImage">
+                </div>
+                @foreach (var im in Model.ProductImages)
+                {
+                    <div class="mySlides">
+                        <img src="~/ProductImages/@im.Url">
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="column">
+                        <img class="demo cursor" src="~/PublicImages/@Model.Products.PublicImage" alt="The Woods">
+                    </div>
+                    @foreach (var im in Model.ProductImages)
+                    {
+                        <div class="column">
+                            <img class="demo cursor" src="~/ProductImages/@im.Url" alt="The Woods">
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="tov-text">
+                <h2>@Model.Products.Name</h2>
+                <p class="price">Цена <span>@Model.Products.Price тг</span><span style="padding-left: 15px;margin-left: 15px; border-left: 1px solid">Мин.заказ @Model.Products.MinPay</span></p>
+                <a href="~/Account/Login" class="tov-btn buy">Купить</a>
+                <ul>
+                    <li>Одобрение онлайн</li>
+                    <li>Высокий уровень одобрения</li>
+                    <li>Возврат в течение 14 дней</li>
+                </ul>
+                <ul>
+                    @{
+                        if (Model.Products.Info1 != null)
+                        {
+                            <li>@Model.Products.Info1;</li>
+                        }
+                        if (Model.Products.Info2 != null)
+                        {
+                            <li>@Model.Products.Info2;</li>
+                        }
+                        if (Model.Products.Info3 != null)
+                        {
+                            <li>@Model.Products.Info3;</li>
+                        }
+                        if (Model.Products.Info4 != null)
+                        {
+                            <li>@Model.Products.Info4;</li>
+                        }
+                        if (Model.Products.Info5 != null)
+                        {
+                            <li>@Model.Products.Info5.</li>
+                        }
+                        if (Model.Products.Info6 != null)
+                        {
+                            <li>@Model.Products.Info6.</li>
+                        }
+                        if (Model.Products.Info7 != null)
+                        {
+                            <li>@Model.Products.Info7.</li>
+                        }
+                        if (Model.Products.Info8 != null)
+                        {
+                            <li>@Model.Products.Info8.</li>
+                        }
+                    }
+                </ul>
+                <a href="~/Admin/EditProductMain/@Model.Products.Id" class="tov-btn">Редактировать</a>
+                <a href="" class="tov-btn har-photo">Добавить фото</a>
+                <a href="/Admin/EditAllPhotos/@Model.Products.Id" class="tov-btn">Изменить фотографии</a>
+            </div>
+            <div class="modal-window modal-window2">
+                <form class="section" method="post" asp-action="AddPhoto" asp-controller="Admin" enctype="multipart/form-data">
+                    <div class="close-photo close-mod1"><span></span></div>
+                    <p>Добавить Фото</p>
+                    <input type="hidden" name="Id" value="@Model.Products.Id" />
+                    <input type="file" name="addphoto" required multiple accept="jpg/png">
+                    <button type="submit" class="submit">Добавить</button>
+                </form>
+            </div>
+        </div>
+        <div class="tov-har">
+            <div class="tab-header">
+                <div class="tab-h tab-active" data-tab="0">Отзывы</div>
+                <div class="tab-h" data-tab="1">Характеристики</div>
+            </div>
+            <div class="tab-body">
+                <div class="tab-b first">
+                    <h2>Отзывы о  CASIO MTP-1374L-1AVDF Black</h2>
+                    @*<div class="otz-cont">
+                        <p>Nurbakyt<br><span>26.03.2019</span></p>
+                        <p>Отличные часы за относительно небольшие деньги. Хронографы не декоративные, а реально работают. Обычно у часов этой категории, они являются декоративной частью.</p>
+                    </div>
+                    <div class="otz-cont">
+                        <p>Nurbakyt<br><span>26.03.2019</span></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo ratione consectetur dolor id placeat, consequuntur autem voluptates nobis et nesciunt, quis! Cum eos, iste autem ducimus. Necessitatibus, impedit deserunt autem, quibusdam veritatis asperiores esse dignissimos odio, fuga, mollitia dolor eveniet ex nulla tenetur dolore temporibus fugiat. Accusamus itaque pariatur error excepturi aliquam, assumenda placeat, expedita. Ad asperiores veritatis facere expedita, optio est a quod culpa harum veniam, odio eligendi, aperiam iure placeat at ex rem. Quas molestiae fuga, voluptatum, alias harum omnis porro accusamus reiciendis itaque sint labore repudiandae laboriosam, suscipit beatae sapiente at ut sed consequuntur dolorum dolor, similique.</p>
+                    </div>*@
+                </div>
+                <div class="tab-b">
+                    <h2>
+                        Характеристики CASIO MTP-1374L-1AVDF Black
+                        <a href="#!" class="tov-btn har-btn">Добавить раздел для характеристикии</a>
+                        <a class="btn btn-danger">Изменить разделы</a>
+                    </h2>
+                    <div class="modal-window modal-window0">
+                        <form class="section" method="post" asp-action="AddOnInfo" asp-controller="Admin">
+                            <div class="close-mod"><span></span></div>
+                            <p>Раздел характеристикии</p>
+                            <input type="hidden" name="Id" value="@Model.Products.Id" />
+                            <input type="text" name="InName" placeholder="Имя" required>
+                            <button type="submit" class="submit">Кнопка</button>
+                        </form>
+                    </div>
+
+                    <div class="modal-window modal-window1">
+                        <form class="section" method="post" asp-action="AddInInfo" asp-controller="Admin">
+                            <div class="close-mod1"><span></span></div>
+                            <p>Добавить характеристикии</p>
+                            <input type="hidden" name="Id" id="xar" value="" />
+                            <input type="text" name="InName" placeholder="Имя" required>
+                            <input type="text" name="InVal" placeholder="Текст" required>
+                            <button type="submit" class="submit">Кнопка</button>
+                        </form>
+                    </div>
+
+
+
+                    @foreach (var t in Model.ProductInfos)
+                    {
+                        <dl>
+                            <dt>@t.InfoName | <a href="/Admin/EditProductInfo/@t.Id" style="color:red;"><span style="color:red!important;" class="glyphicon glyphicon-pencil"></span></a></dt>
+                            <dd>
+                                @foreach (var s in t.InProductInfos)
+                                {
+                                    <dl>
+                                        <dt><span class="spec">@s.InfoName</span></dt>
+                                        <dd>@s.InfoValue |</dd>
+                                        <dd><a href="/Admin/EditInProductInfo/@s.Id" style="color:red!important;"><span style="color:red!important;" class="glyphicon glyphicon-pencil"></span></a></dd>
+                                    </dl>
+                                    
+                                }
+                                <dl>
+                                    <a href="#!" id="@t.Id" class="tov-btn har-btn1">
+                                        Добавить Характеристику
+                                    </a>
+                                </dl>
+                            </dd>
+                        </dl>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</content>
+
+<script type="text/javascript" src="slick/slick.min.js"></script>
+<script>
+    $('.har-btn1').on('click', function (e) {
+
+        e.preventDefault();
+        //  var b = $(this).attr(id);
+        var b = this.id;
+        document.getElementById("xar").value = b;
+        $('.modal-window1').css('display', 'flex');
+    });
+     $('.har-btn').on('click', function (e) {
+        e.preventDefault();
+        $('.modal-window0').css('display', 'flex');
+     });
+     $('.close-mod').on('click', function (e) {
+            e.preventDefault();
+            $('.modal-window').css('display', 'none');
+        });
+
+    $('.close-mod1').on('click', function (e) {
+        e.preventDefault();
+        $('.modal-window1').css('display', 'none');
+    });
+
+    $('.har-photo').on('click', function (e) {
+
+        e.preventDefault();
+        $('.modal-window2').css('display', 'flex');
+    });
+    $('.close-photo').on('click', function (e) {
+        e.preventDefault();
+        $('.modal-window2').css('display', 'none');
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.column').on('click', function currentSlide() {
+            showSlides(slideIndex = $(this).index() + 1);
+        });
+
+        $('.row').slick({
+            dots: false,
+            infinite: false,
+            speed: 1000,
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        infinite: false,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4
+                    }
+                },
+
+                {
+                    breakpoint: 400,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                }
+            ]
+        });
+
+
+
+    })
+
+    window.onload = function () {
+        document.querySelector('.tab-header').onclick = function (event) {
+            console.log(event.target.getAttribute('data-tab'));
+            if (event.target.className == 'tab-h') {
+                var dataTab = event.target.getAttribute('data-tab');
+                var tabB = document.getElementsByClassName('tab-b');
+                var tabH = document.getElementsByClassName('tab-h');
+
+                for (var i = 0; i < tabH.length; i++) {
+                    tabH[i].classList.remove('tab-active');
+                }
+                event.target.classList.add('tab-active');
+                for (var j = 0; j < tabB.length; j++) {
+                    if (dataTab == j) {
+                        tabB[j].style.display = 'block';
+                    }
+                    else {
+                        tabB[j].style.display = 'none';
+                    }
+                }
+            }
+        }
+    }
+
+    var slideIndex = 1;
+    var column = document.querySelector('.column');
+    showSlides(slideIndex);
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+
+</script>

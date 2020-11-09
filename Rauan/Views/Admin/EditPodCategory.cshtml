@@ -1,0 +1,22 @@
+﻿@model Rauan.DbData.Pod_Category
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<link rel="stylesheet" href="~/css/add.css">
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="Admin" asp-action="EditPodCategory" class="form-group">
+            <h3>Изменить ПодКатегорию</h3>
+            <input asp-for="Id" type="hidden"><br />
+            <label style="color:black;">
+                Имя Категории: <span style="color:red;">@Model.Category.Name</span> <br />
+            </label> <br />
+            <label style="color:black;">название<input asp-for="Name" class="form-control"></label><br />
+            <input type="submit" class="btn btn-success" value="Изменить">
+        </form>
+    </div>
+</div>
+
