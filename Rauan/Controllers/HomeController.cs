@@ -22,7 +22,7 @@ namespace Rauan.Controllers
         {
 
           //  return Redirect("http://rauantech.kz");
-            return View();
+            return View(db.Banners.ToList());
         }
 
         public IActionResult About()

@@ -5,19 +5,16 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Banners</h2>
+<h2>Баннеры</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Url)
+                Фото баннера
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Number)
+                Номерация
             </th>
             <th></th>
         </tr>
@@ -26,15 +23,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Url)
+                <img src="@item.Url" style="height:100px" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Number)
-            </td>
+            </td> 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Редактировать", "EditBanner", new {  Id=item.Id  })
             </td>
         </tr>
 }

@@ -615,5 +615,34 @@ namespace Rauan.Controllers
 
             return View(ban);
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> EditBanner(Banner model, IFormFile banner)
+        {
+
+            if (banner != null)
+            {
+                string pimg = "/banner/" + banner.FileName;
+                // сохраняем файл в папку Files в каталоге wwwroot
+                using (var fileStream = new FileStream(env.WebRootPath + pimg, FileMode.Create))
+                {
+                    await banner.CopyToAsync(fileStream);
+                }
+
+                var ban = db.Banners.FirstOrDefault(o => o.Id == model.Id);
+                if(ban != null)
+                {
+                    ban.Url = pimg;
+
+                    db.Banners.Update(ban);
+                    db.SaveChanges();
+                }
+            }
+
+
+
+            return RedirectToAction("Banners");
+        }
     }
 }

@@ -458,14 +458,17 @@ a.mob-down:hover, a.mob-down:hover > i{
   	-webkit-transition: 0.5s;
   	-o-transition: 0.5s;
   	transition: 0.5s;
+      text-decoration:none;
+      color:white;
 }
-.user > i, .city > i{
-	font-size: 24px;
-  	color: #fff;
-  	-webkit-transition: 0.5s;
-  	-o-transition: 0.5s;
-  	transition: 0.5s;
-}
+    .user > i, .city > i {
+        font-size: 24px;
+        color: #fff;
+        -webkit-transition: 0.5s;
+        -o-transition: 0.5s;
+        transition: 0.5s;
+        padding-right: 10px;
+    }
 .city:hover, .user:hover, .city:hover > i, .user:hover > i{
 	color: #FF3D28;
 }
