@@ -550,7 +550,6 @@ i.fa-search {
                 display: flex;
                 -ms-align-items: center;
                 align-items: center;
-                padding-right: 100px;
             }
 
                 .tab-b > dl > dd > dl * {
@@ -589,6 +588,7 @@ i.fa-search {
 
     .tab-b > dl > dd > dl > dd {
         padding: 0 5px;
+        width: 30%;
     }
 
 .otz-cont {

@@ -317,12 +317,8 @@ ul.mob-dost-menu > li a{
   /*width: 50px;*/
   height: 50px;
   display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
   display: flex;
   justify-content: center;
-  -ms-align-items: center;
   align-items: center;
   margin-right: 20px;
   /*border: 1px solid #FF3D28;*/
@@ -444,7 +440,7 @@ a.mob-down:hover, a.mob-down:hover > i{
 	margin-right: 5px;
 }
 .user{
-	width: 25px;
+/*	width: 25px;*/
 	height: 25px;
   	display: -webkit-flex;
   	display: -moz-flex;
@@ -467,7 +463,7 @@ a.mob-down:hover, a.mob-down:hover > i{
         -webkit-transition: 0.5s;
         -o-transition: 0.5s;
         transition: 0.5s;
-        padding-right: 10px;
+        padding-left: 10px;
     }
 .city:hover, .user:hover, .city:hover > i, .user:hover > i{
 	color: #FF3D28;
@@ -774,10 +770,6 @@ a.mob-down:hover, a.mob-down:hover > i{
 @media  (max-width: 768px){
 	*{
 		font-size: 14px;
-	}
-	.logo{
-		width: 50px;
-		margin-right: 0;
 	}
     .nav > ul > li a {
         margin: 0;

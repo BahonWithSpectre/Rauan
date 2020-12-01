@@ -17,14 +17,45 @@
         </ul>
     </div>
     <div class="sect-cont">
-        <div class="sect-nas form-group" >
-            <a href="~/Store/Shop">Магазин</a>
-            <a href="~/Store/ShopMenu/@ViewBag.Id?page=1"><i class="fas fa-arrow-right"></i>@ViewBag.Name</a>
-            <a>| Сортировка по</a>
-            <select class="form-control">
-                <option>По возрастанию цен</option>
-                <option>По убыванию цен</option>
-            </select>
+        <h1 style="font-size: 20px; margin-bottom: 10px; padding-left: 10px;">Популярные брэнды</h1> 
+        <div class="brand_block">
+            <a href="~/Store/Shop">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/647px-Apple_logo_black.svg.png" />
+                <h3>Apple</h3>
+            </a>
+            <a href="~/Store/Shop">
+                <img src="https://lh3.googleusercontent.com/proxy/pA6QnvoUYtpZhBJaE_G43GCvci252PoK2cLRFhkCwHx3miijVdPC7IBBEpTTp23C8qhlQn4eHidpy1WDWrIzOyifmCJCiGsQ1ZWg9lwfDQ1D8uD4EgD-Ow0s7-NLSLwmqAGR" />
+                <h3>Samsung</h3>
+            </a>
+            <a href="~/Store/Shop">
+                <img src="https://seeklogo.com/images/O/oppo-logo-EBAE145CED-seeklogo.com.png" />
+                <h3>Oppo</h3>
+            </a>
+            <a href="~/Store/Shop">
+                <img src="https://cdn.worldvectorlogo.com/logos/xiaomi-2019-.svg" />
+                <h3>Xiaomi</h3>
+            </a>
+            <a href="~/Store/Shop">
+                <img src="https://network.msk.ru/files/products/huawei-logo_14.600x600.jpg?2281e714d1ce422e3d5f9f56df216439" />
+                <h3>Huawei</h3>
+            </a>
+            <a href="~/Store/Shop">
+                <img src="https://library.kissclipart.com/20181116/joe/kissclipart-lg-29ub67-29219-widescreen-ips-led-2560x1080-m-8b4ec75025113c6b.jpg" />
+                <h3>LG</h3>
+            </a>
+        </div>
+        <div class="sect-nas form-group">
+            <div>
+                <a href="~/Store/Shop">Магазин</a>
+                <a href="~/Store/ShopMenu/@ViewBag.Id?page=1"><i class="fas fa-arrow-right"></i>@ViewBag.Name</a>
+            </div>
+            <div class="sort_tovar">
+                <span>Сортировка по</span>
+                <select class="sort_select">
+                    <option value="~/Store/Shop">По возрастанию цены</option>
+                    <option value="~/Store/Shop">По убыванию цены</option>
+                </select>
+            </div>
         </div>
         <div class="tovars">
             @foreach (var t in Model.Products)
@@ -35,8 +66,7 @@
                     </a>
                     <a href="~/Store/Details/@t.Id" class="tovar-name">@t.Name</a>
                     <div class="price">
-                        <p>Цена<br /><span>@t.Price тг</span></p>
-                        <p>Мин.Заказ<br /><span>@t.MinPay</span></p>
+                        <p>Цена <span>@t.Price тг</span></p>
                     </div>
                 </div>
             }

@@ -154,7 +154,7 @@ i.fa-search {
 }
 
 .tovars { /*---------------TOVARS-------------*/
-    width: 85%;
+    width: 100%;
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;

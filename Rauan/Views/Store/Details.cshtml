@@ -96,11 +96,11 @@
         </div>
         <div class="tov-har">
             <div class="tab-header">
-                <div class="tab-h tab-active" data-tab="0">Отзывы</div>
-                <div class="tab-h" data-tab="1">Характеристики</div>
+                @*<div class="tab-h" data-tab="0">Отзывы</div>*@
+                <div class="tab-h tab-active" data-tab="1">Характеристики</div>
             </div>
             <div class="tab-body">
-                <div class="tab-b first">
+                @*<div class="tab-b first">
                     <h2>Отзывы о @Model.Products.Name</h2>
                     @foreach (var b in Model.Comments)
                     {
@@ -129,8 +129,8 @@
                         </div>
                     }
 
-                </div>
-                <div class="tab-b">
+                </div>*@
+                <div class="tab-b first">
                     <h2>Характеристики @Model.Products.Name</h2>
                     @foreach (var t in Model.ProductInfos)
                     {
@@ -143,7 +143,6 @@
                                         <dt><span class="spec">@s.InfoName</span></dt>
                                         <dd>@s.InfoValue</dd>
                                     </dl>
-
                                 }
                             </dd>
                         </dl>

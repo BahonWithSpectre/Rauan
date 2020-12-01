@@ -15,7 +15,7 @@ content .tovar{
   padding: 20px;
   margin: 10px;
   background-color: #fff;
-  box-shadow: 0 1px 5px #90A8D1;
+  box-shadow: 0 0 3px #90A8D1;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
@@ -23,8 +23,7 @@ content .tovar{
 content .tovar > img{
   width: 100%;
   height: 150px;
-  background-color: #FF3D28;
-  font-size: 50px;
+  background-color: #ccc;
 }
 content .tovar > h3{
   font-size: 20px;
@@ -46,7 +45,7 @@ content .tovar > a:hover{
   text-decoration: underline;
 }
 content .tovar:hover{
-  box-shadow: 0 1px 15px #90A8D1;
+  box-shadow: 0 0 7px #90A8D1;
 }
 content .tovar:hover > h3{
   color: #FF3D28;

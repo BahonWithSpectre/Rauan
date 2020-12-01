@@ -267,9 +267,6 @@ i.fa-search {
 .tov-text {
     width: 40%;
     display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
     display: flex;
     -webkit-flex-direction: column;
     -moz-flex-direction: column;
@@ -401,11 +398,7 @@ i.fa-search {
 .tab-b > dl > dd > dl {
     width: 100%;
     display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
     display: flex;
-    -ms-align-items: center;
     align-items: center;
     padding-right: 100px;
 }
@@ -446,6 +439,7 @@ i.fa-search {
 
 .tab-b > dl > dd > dl > dd {
     padding: 0 5px;
+    width: 30%;
 }
 
 .otz-cont {
