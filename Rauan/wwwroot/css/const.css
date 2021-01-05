@@ -6,18 +6,20 @@
   font-family: Roboto, sans-serif;
   font-size: 16px;
 }
-.wrap{
-  width: 100%;
-  background-color: #FAFAFA;
-  user-select: none;
-  margin: 0 auto;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  position: relative;
-  overflow-x: hidden;
+body {
+}
+.wrap {
+    width: 100%;
+    /*  background-color: #FAFAFA;*/
+    user-select: none;
+    margin: 0 auto;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    position: relative;
+    overflow-x: hidden;
 }
 .main{
 	width: 100%;
@@ -278,25 +280,32 @@ ul.mob-dost-menu > li a{
 
 
 /*-------------------HEADER-------------------------------------*/
-.main > header{
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-	z-index: 10000;
+.main > header {
+    width: 100%;
+    position: fixed;
+    background-color: #118CE9;
+    box-shadow: 0 1px 10px #118CE9;
+    top: 0;
+    left: 0;
+    z-index: 10000;
 }
-.main > header, .mob-menu > .mob-header{
+.main .header-in {
+    margin: auto;
+    height: 70px;
+    color: #fff;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mob-menu > .mob-header{
   height: 70px;
   color: #fff;
   background-color: #118CE9;
   box-shadow: 0 1px 10px #118CE9;
   display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
   display: flex;
   justify-content: space-between;
-  -ms-align-items: center;
   align-items: center;
 }
 .mob-header {
@@ -662,26 +671,27 @@ a.mob-down:hover, a.mob-down:hover > i{
 /*-------------------CONTENT-------------------------------------*/
 
 
-.main > header, .main > content, .main > footer {
-    padding-left: 13%;
-    padding-right: 13%;
+.main .header-in, .main > content, .main .footer-in {
+    max-width: 1140px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /*-------------------FOOTER-------------------------------------*/
 
 .main > footer{
 	width: 100%;
-	padding: 20px 13% 40px 13%;
 	border-top: 1px solid #E5E5E5;
 	background-color: #F7F7F7;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
-	justify-content: space-between;
-	-ms-align-items: center;
-	align-items: center;
+}
+.main .footer-in {
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .fmidle {
     width: 70%;
@@ -737,12 +747,8 @@ a.mob-down:hover, a.mob-down:hover > i{
 }
 .social {
     display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
     display: flex;
     justify-content: space-around;
-    -ms-align-items: center;
     align-items: center;
 }
 .social > i{
@@ -752,7 +758,11 @@ a.mob-down:hover, a.mob-down:hover > i{
 }
 
 
-@media  (min-width: 1367px){
+@media  (max-width: 1200px){
+    .main .header-in, .main > content, .main .footer-in {
+        padding-left: 13%;
+        padding-right: 13%;
+    }
 }
 
 @media  (max-width: 1024px){

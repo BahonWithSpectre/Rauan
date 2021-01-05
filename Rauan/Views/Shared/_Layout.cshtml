@@ -95,53 +95,55 @@
 
         <div class="main">
             <header>
-                <div class="left">
-                    @*<a href="~/Home/Index" class="logo">SQ Express</a>*@
-                    <a href="~/Home/Index" class="logo"><img src="~/logo/rauan-logo-mini.png" alt="Alternate Text" /></a>
-                    <div class="nav">
-                        <ul>
-                            <li><a href="~/Store/Shop">Магазин</a></li>
-                            <li><a href="#!">Контакты</a></li>
-                            <li>|</li>
-                            <li><a href="~/Admin/List">Admin Panel</a></li>
-                        </ul>
+                <div class="header-in">
+                    <div class="left">
+                        @*<a href="~/Home/Index" class="logo">SQ Express</a>*@
+                        <a href="~/Home/Index" class="logo"><img src="~/logo/rauan-logo-mini.png" alt="Alternate Text" /></a>
+                        <div class="nav">
+                            <ul>
+                                <li><a href="~/Store/Shop">Магазин</a></li>
+                                <li><a href="#!">Контакты</a></li>
+                                <li>|</li>
+                                <li><a href="~/Admin/List">Admin Panel</a></li>
+                            </ul>
+                        </div>
                     </div>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="right right-user">
+
+
+
+                            <div class="city">@User.Identity.Name</div>
+                            <a href="#!" class="user"><i class="fa fa-user"></i></a>
+                            <div class="user-menu">
+                                <i class="fa fa-caret-up"></i>
+                                @*<p><span>Мой мобильный</span><br>+7(708) 116-27-75</p>*@
+                                <a href="~/Account/Parol"><i class="fa fa-cog"></i>Сменить пароль</a>
+                                <a href="#!" class="cart-show"><i class="fa fa-bars"></i>Корзина</a>
+                                <a href="~/Account/Logout"><i class="fa fa-sign-out-alt"></i>Выход</a>
+                            </div>
+                        </div>
+                        <div class="modal-window user-modal">
+                            <div class="section">
+                                <div class="close"><span></span></div>
+                                <h1>Моя корзина</h1>
+                                <div class="user-tovar"></div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="right">
+
+
+                            @*<div class="city"><i class="fa fa-map-marker-alt"></i>Алматы</div>*@
+                            <a href="~/Account/Login" class="user">Вход <i class="fa fa-user"></i></a>
+                        </div>
+                    }
+
                 </div>
-
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <div class="right right-user">
-
-                        
-
-                        <div class="city">@User.Identity.Name</div>
-                        <a href="#!" class="user"><i class="fa fa-user"></i></a>
-                        <div class="user-menu">
-                            <i class="fa fa-caret-up"></i>
-                            @*<p><span>Мой мобильный</span><br>+7(708) 116-27-75</p>*@
-                            <a href="~/Account/Parol"><i class="fa fa-cog"></i>Сменить пароль</a>
-                            <a href="#!" class="cart-show"><i class="fa fa-bars"></i>Корзина</a>
-                            <a href="~/Account/Logout"><i class="fa fa-sign-out-alt"></i>Выход</a>
-                        </div>
-                    </div>
-                    <div class="modal-window user-modal">
-                        <div class="section">
-                            <div class="close"><span></span></div>
-                            <h1>Моя корзина</h1>
-                            <div class="user-tovar"></div>
-                        </div>
-                    </div>
-                }
-                else
-                {
-            <div class="right">
-
-
-                @*<div class="city"><i class="fa fa-map-marker-alt"></i>Алматы</div>*@
-                <a href="~/Account/Login" class="user">Вход <i class="fa fa-user"></i></a>
-            </div>
-                }
-
             </header>
 
 
@@ -149,29 +151,31 @@
 
 
             <footer>
-                <div class="foot-nav">
-                    <ul>
-                        <li><a href="#!">Магазин</a></li>
-                        <li><a href="#!">Контакты</a></li>
-                    </ul>
-                </div>
-                <div class="fmidle">
-                    <div class="social">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-vk"></i>
-                        <i class="fab fa-telegram"></i>
-                        <i class="fab fa-instagram"></i>
+                <div class="footer-in">
+                    <div class="foot-nav">
+                        <ul>
+                            <li><a href="#!">Магазин</a></li>
+                            <li><a href="#!">Контакты</a></li>
+                        </ul>
                     </div>
-                    <p>2020 гг <br />ТОО «RauanTech»</p>
-                    <p>Корпоративный сайт</p>
-                    <p>Пользовательское соглашение</p>
-                </div>
-                <div class="fright">
-                    <div class="market">
-                        <a href="#!"><img src="~/images/PlayMarket.png" alt=""></a>
-                        <a href="#!"><img src="~/images/AppStore.png" alt=""></a>
+                    <div class="fmidle">
+                        <div class="social">
+                            <i class="fab fa-facebook"></i>
+                            <i class="fab fa-vk"></i>
+                            <i class="fab fa-telegram"></i>
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <p>2020 гг <br />ТОО «RauanTech»</p>
+                        <p>Корпоративный сайт</p>
+                        <p>Пользовательское соглашение</p>
                     </div>
-                    <p>+7(702) 509 96 97 </p>
+                    <div class="fright">
+                        <div class="market">
+                            <a href="#!"><img src="~/images/PlayMarket.png" alt=""></a>
+                            <a href="#!"><img src="~/images/AppStore.png" alt=""></a>
+                        </div>
+                        <p>+7(702) 509 96 97 </p>
+                    </div>
                 </div>
             </footer>
         </div>
