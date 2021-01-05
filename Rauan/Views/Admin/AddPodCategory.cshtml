@@ -4,20 +4,25 @@
 }
 <link rel="stylesheet" href="~/css/add.css">
 
-<form asp-controller="Admin" asp-action="AddPodCategory">
-    <h3>Добавить новый PodCategory</h3>
-    <label>
-        CategoryId
-        <select name="ctmodel">
-            @foreach (var c in ViewBag.Category)
-            {
-                <option value="@c.Name">@c.Name</option>
-            }
-        </select>
-    </label><br />
-    <label>Name<input asp-for="Name" type="text" placeholder="text..."></label><br />
-    <input type="submit" value="Add PodCategory">
-</form>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Admin" asp-action="AddPodCategory" class="form-group">
+            <h3>Добавить новый Подкатегория</h3>
+            <label>
+                Выбрать категорию
+                <select name="ctmodel" class="form-control">
+                    @foreach (var c in ViewBag.Category)
+                    {
+                        <option value="@c.Name">@c.Name</option>
+                    }
+                </select>
+            </label><br />
+            <label>Название подкатегории<input asp-for="Name" type="text" placeholder="text..." class="form-control"></label><br />
+            <input type="submit" value="Сохранить" class="btn btn-success">
+        </form>
+    </div>
+</div>
+
 
 <script type="text/javascript">
 </script>

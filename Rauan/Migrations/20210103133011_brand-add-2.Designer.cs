@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rauan.DbData;
 
 namespace Rauan.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210103133011_brand-add-2")]
+    partial class brandadd2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,25 +159,6 @@ namespace Rauan.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Brands");
-                });
-
-            modelBuilder.Entity("Rauan.DbData.BrandPodCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BrandId");
-
-                    b.Property<int>("Pod_CategoryId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BrandId");
-
-                    b.HasIndex("Pod_CategoryId");
-
-                    b.ToTable("BrandPodCategories");
                 });
 
             modelBuilder.Entity("Rauan.DbData.Category", b =>
@@ -468,19 +451,6 @@ namespace Rauan.Migrations
                     b.HasOne("Rauan.DbData.User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Rauan.DbData.BrandPodCategory", b =>
-                {
-                    b.HasOne("Rauan.DbData.Brand", "Brand")
-                        .WithMany()
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Rauan.DbData.Pod_Category", "Pod_Category")
-                        .WithMany()
-                        .HasForeignKey("Pod_CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

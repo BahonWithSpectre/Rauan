@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Rauan.DbData.Brand>
+
+@{
+    ViewData["Title"] = "Brand";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Бренды</h2>
+
+<p>
+    <a href="~/Admin/AddBrand" class="btn btn-warning">Добавить бренд</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandName)
+            </td>
+            <td>
+                <a href="/Admin/EditBrand/@item.Id">Изменить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

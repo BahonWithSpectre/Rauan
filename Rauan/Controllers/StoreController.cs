@@ -64,7 +64,7 @@ namespace Rauan.Controllers
 
 
 
-        public async Task<IActionResult> ShopMenu(int? Id, int? page)
+        public async Task<IActionResult> ShopMenu(int? Id, int? page, int? sort)
         {
             if (Id != null)
             {
@@ -83,12 +83,29 @@ namespace Rauan.Controllers
 
                 ShopMenuViewModel smvm = new ShopMenuViewModel
                 {
-                    Products = await db.Products.Include(p => p.Pod_Category).ThenInclude(p => p.Category).Where(p => p.Pod_Category.CategoryId == Id).Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize).ToListAsync(),
-                    Categories = await db.Categories.ToListAsync(),
-                    Pod_Categories = await db.Pod_Categories.ToListAsync(),
+                    Products = await db.Products.Include(p => p.Brand).Where(p => p.Pod_Category.CategoryId == Id)/*.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize)*/.ToListAsync(),
+
+                    Categories = await db.Categories.AsNoTracking().ToListAsync(),
+                    Pod_Categories = await db.Pod_Categories.AsNoTracking().ToListAsync(),
                     Pager = pager
                 };
 
+                if(sort != null)
+                {
+                    smvm.Products = null;
+                    if (sort == 1)
+                    {
+
+                        smvm.Products = await db.Products.Include(p => p.Brand).Where(p => p.Pod_Category.CategoryId == Id).OrderBy(p=>p.Price).ToListAsync();
+                    
+                    }
+                    else if(sort==2)
+                    {
+                        smvm.Products = await db.Products.Include(p => p.Brand).Where(p => p.Pod_Category.CategoryId == Id).OrderByDescending(p => p.Price).ToListAsync();
+                    }
+                }
+
+                ViewBag.Brand = await db.Brands.ToListAsync(); //Where(p => p.Pod_CategoryId == Id).AsNoTracking().ToListAsync();
 
                 return View(smvm);
             }

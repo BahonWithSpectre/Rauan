@@ -31,5 +31,9 @@ namespace Rauan.DbData
         /// </summary>
         public DbSet<Request> Requests { get; set; }
         public DbSet<Banner> Banners { get; set; }
+
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<BrandPodCategory> BrandPodCategories { get; set; }
+
     }
 }

@@ -12,23 +12,37 @@
             <label>Name<input asp-for="Name" type="text" value="@Model.Name"></label>
             <label>FirstInfo<input asp-for="FirstInfo" type="text" value="@Model.FirstInfo"></label>
             <label>Price<input asp-for="Price" type="number" value="@Model.Price"></label>
-            <label>MinPay<input asp-for="MinPay" type="number" value="@Model.MinPay"></label>
 
             <label>
-                CategoryId
-                <select id="ctmodel" name="ctmodel">
-                    @foreach (var c in ViewBag.Category)
+                Под категории
+                <select id="pctmodel" name="pctmodel">
+                    @foreach (var c in ViewBag.pc)
                     {
-                        <option value="@c.Name">@c.Name</option>
+                        if (c.Id == Model.Id)
+                        {
+                            <option value="@c.Name" selected>@c.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@c.Name">@c.Name</option>
+                        }
                     }
                 </select>
             </label>
             <label>
-                PodCategoryId
-                <select id="pctmodel" name="pctmodel">
-                    @foreach (var c in ViewBag.pc)
+                Выбрать бренд
+                <select name="brand">
+                    @foreach (var c in ViewBag.Brand)
                     {
-                        <option value="@c.Name">@c.Name</option>
+                        if (c.Id == Model.BrandId)
+                        {
+                            <option value="@c.Id" selected>@c.BrandName</option>
+                        }
+                        else
+                        {
+                            <option value="@c.Id">@c.BrandName</option>
+                        }
+                        
                     }
                 </select>
             </label>

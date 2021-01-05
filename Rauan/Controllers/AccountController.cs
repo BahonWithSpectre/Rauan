@@ -76,7 +76,7 @@ namespace Rauan.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            return View(new RegisterModel());
         }
 
 

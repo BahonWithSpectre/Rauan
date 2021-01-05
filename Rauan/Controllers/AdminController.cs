@@ -160,7 +160,7 @@ namespace Rauan.Controllers
                 };
                 await db.Pod_Categories.AddAsync(podcat);
                 await db.SaveChangesAsync();
-                return RedirectToAction("List", "Admin");
+                return RedirectToAction("PodCatList", "Admin", new { Id = cid });
             }
             return View(model);
         }
@@ -169,24 +169,16 @@ namespace Rauan.Controllers
 
 
 
-
-
-
-
-
-
-
-
-
         public IActionResult AddProduct()
         {
-            ViewBag.Category = db.Categories;
-            ViewBag.pc = db.Pod_Categories.ToList();
+            ViewBag.Category = db.Categories.AsNoTracking().ToList();
+            ViewBag.pc = db.Pod_Categories.AsNoTracking().ToList();
+            ViewBag.Brand = db.Brands.AsNoTracking().ToList();
 
-            return View();
+            return View(new Product());
         }
         [HttpPost]
-        public async Task<IActionResult> AddProduct(ProductModel model, IFormFile PublicImg, string ctmodel, string pctmodel)
+        public async Task<IActionResult> AddProduct(ProductModel model, IFormFile PublicImg, string ctmodel, string pctmodel, int brand)
         {
             if (ModelState.IsValid)
             {
@@ -207,15 +199,22 @@ namespace Rauan.Controllers
                     Name = model.Name,
                     FirstInfo = model.FirstInfo,
                     Price = model.Price,
-                    MinPay = model.MinPay,
                     Info1 = model.Info1,
                     Info2 = model.Info2,
                     Info3 = model.Info3,
                     Info4 = model.Info4,
                     Info5 = model.Info5,
                     PublicImage = PublicImg.FileName,
-                    Pod_CategoryId = pcid
+                    Pod_CategoryId = pcid,
+                    BrandId = brand
                 };
+
+                var ewres = await db.BrandPodCategories.Where(p => p.Pod_CategoryId == pcid && p.BrandId == brand).FirstOrDefaultAsync();
+                if(ewres == null)
+                {
+                    BrandPodCategory bpc = new BrandPodCategory { BrandId = pcid, Pod_CategoryId = brand };
+                    await db.BrandPodCategories.AddAsync(bpc);
+                }
 
                 await db.Products.AddAsync(product);
                 await db.SaveChangesAsync();
@@ -304,8 +303,9 @@ namespace Rauan.Controllers
         {
             if (Id != null)
             {
-                ViewBag.Category = db.Categories;
-                ViewBag.pc = db.Pod_Categories.Take(1);
+                ViewBag.Category = db.Categories.AsNoTracking().ToList();
+                ViewBag.pc = db.Pod_Categories.AsNoTracking().ToList();
+                ViewBag.Brand = db.Brands.AsNoTracking().ToList();
 
                 Product pr = await db.Products.FirstOrDefaultAsync(p => p.Id == Id);
 
@@ -314,7 +314,7 @@ namespace Rauan.Controllers
             return RedirectToAction("ListProduct", "Admin");
         }
         [HttpPost]
-        public async Task<IActionResult> EditProductMain(int? Id, ProductModel model, IFormFile PublicImg, string ctmodel, string pctmodel)
+        public async Task<IActionResult> EditProductMain(int? Id, ProductModel model, IFormFile PublicImg, string ctmodel, string pctmodel, int brand)
         {
             if (Id != null)
             {
@@ -327,8 +327,8 @@ namespace Rauan.Controllers
                     {
                         await PublicImg.CopyToAsync(fileStream);
                     }
+                    pr.PublicImage = PublicImg.FileName;
                 }
-                int cid = db.Categories.FirstOrDefault(p => p.Name == ctmodel).Id;
                 int pcid = db.Pod_Categories.FirstOrDefault(p => p.Name == pctmodel).Id;
 
                 if (pr != null)
@@ -336,16 +336,13 @@ namespace Rauan.Controllers
                     pr.Name = model.Name;
                     pr.FirstInfo = model.FirstInfo;
                     pr.Price = model.Price;
-                    pr.MinPay = model.MinPay;
                     pr.Info1 = model.Info1;
                     pr.Info2 = model.Info2;
                     pr.Info3 = model.Info3;
                     pr.Info4 = model.Info4;
                     pr.Info5 = model.Info5;
-                    pr.PublicImage = PublicImg.FileName;
-                    pr.CategoryId = cid;
                     pr.Pod_CategoryId = pcid;
-
+                    pr.BrandId = brand;
                     await db.SaveChangesAsync();
                     return RedirectToAction("EditProduct", "Admin", new { pr.Id });
                 }
@@ -643,6 +640,47 @@ namespace Rauan.Controllers
 
 
             return RedirectToAction("Banners");
+        }
+
+
+
+        public IActionResult Brand()
+        {
+            return View(db.Brands.ToList());
+        }
+
+        public IActionResult AddBrand()
+        {
+            return View(new Brand());
+        }
+
+        [HttpPost]
+        public IActionResult AddBrand(Brand model)
+        {
+            db.Brands.Add(model);
+            db.SaveChanges();
+
+            return RedirectToAction("Brand", "Admin");
+        }
+
+
+        public IActionResult EditBrand(int Id)
+        {
+            return View(db.Brands.Where(p=>p.Id == Id).FirstOrDefault());
+        }
+
+        [HttpPost]
+        public IActionResult EditBrand(Brand model)
+        {
+            var br = db.Brands.Where(p => p.Id == model.Id).FirstOrDefault();
+
+            br.BrandName = model.BrandName;
+            br.Icon = model.Icon;
+
+            db.Brands.Update(br);
+            db.SaveChanges();
+
+            return RedirectToAction("Brand", "Admin");
         }
     }
 }

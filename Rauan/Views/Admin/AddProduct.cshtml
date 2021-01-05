@@ -8,26 +8,35 @@
     <h3>Добавить новый продукт</h3>
     <section>
         <div class="sect-left">
-            <label>Name<input asp-for="Name"  placeholder="text..."></label>
-            <label>FirstInfo<input asp-for="FirstInfo"  placeholder="text..."></label>
-            <label>Price<input asp-for="Price"  placeholder="number..."></label>
-            <label>MinPay<input asp-for="MinPay"  placeholder="number..."></label>
+            <label>Name<input asp-for="Name" placeholder="text..."></label>
+            <label>FirstInfo<input asp-for="FirstInfo" placeholder="text..."></label>
+            <label>Price<input asp-for="Price" placeholder="number..."></label>
 
             @*<label>
-                CategoryId
-                <select id="ctmodel" name="ctmodel">
-                    @foreach (var c in ViewBag.Category)
-                    {
-                        <option value="@c.Name">@c.Name</option>
-                    }
-                </select>
-            </label>*@
+            CategoryId
+            <select id="ctmodel" name="ctmodel">
+                @foreach (var c in ViewBag.Category)
+                {
+                    <option value="@c.Name">@c.Name</option>
+                }
+            </select>
+        </label>*@
             <label>
                 Под Категория
                 <select @*id="pctmodel"*@ name="pctmodel">
                     @foreach (var c in ViewBag.pc)
                     {
                         <option value="@c.Name">@c.Name</option>
+                    }
+                </select>
+            </label>
+
+            <label>
+                Выбрать бренд
+                <select @*id="pctmodel"*@ name="brand">
+                    @foreach (var c in ViewBag.Brand)
+                    {
+                        <option value="@c.Id">@c.BrandName</option>
                     }
                 </select>
             </label>

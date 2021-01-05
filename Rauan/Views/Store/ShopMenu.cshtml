@@ -19,13 +19,21 @@
     <div class="sect-cont">
         <h1 style="font-size: 20px; margin-bottom: 10px; padding-left: 10px;">Популярные брэнды</h1> 
         <div class="brand_block">
-            <a href="~/Store/Shop">
+
+            @foreach(var f in ViewBag.Brand)
+            {
+                <a href="~/Store/Shop">
+                    <img src="@f.Icon" />
+                    <h3>@f.BrandName</h3>
+                </a>
+            }
+
+            @*<a href="~/Store/Shop">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/647px-Apple_logo_black.svg.png" />
                 <h3>Apple</h3>
             </a>
             <a href="~/Store/Shop">
-                <img src="https://lh3.googleusercontent.com/proxy/pA6QnvoUYtpZhBJaE_G43GCvci252PoK2cLRFhkCwHx3miijVdPC7IBBEpTTp23C8qhlQn4eHidpy1WDWrIzOyifmCJCiGsQ1ZWg9lwfDQ1D8uD4EgD-Ow0s7-NLSLwmqAGR" />
-                <h3>Samsung</h3>
+                <img src="<h3>Samsung</h3>
             </a>
             <a href="~/Store/Shop">
                 <img src="https://seeklogo.com/images/O/oppo-logo-EBAE145CED-seeklogo.com.png" />
@@ -42,20 +50,21 @@
             <a href="~/Store/Shop">
                 <img src="https://library.kissclipart.com/20181116/joe/kissclipart-lg-29ub67-29219-widescreen-ips-led-2560x1080-m-8b4ec75025113c6b.jpg" />
                 <h3>LG</h3>
-            </a>
+            </a>*@
         </div>
         <div class="sect-nas form-group">
             <div>
                 <a href="~/Store/Shop">Магазин</a>
                 <a href="~/Store/ShopMenu/@ViewBag.Id?page=1"><i class="fas fa-arrow-right"></i>@ViewBag.Name</a>
             </div>
-            <div class="sort_tovar">
+            <form class="sort_tovar" asp-action="ShopMenu" method="get" id="forms" >
                 <span>Сортировка по</span>
-                <select class="sort_select">
-                    <option value="~/Store/Shop">По возрастанию цены</option>
-                    <option value="~/Store/Shop">По убыванию цены</option>
+                <select class="sort_select" name="sort" onselect="sortselectfun()">
+                    <option value="1">По возрастанию цены</option>
+                    <option value="2">По убыванию цены</option>
                 </select>
-            </div>
+                <input type="submit" value="Сортировать" />
+            </form>
         </div>
         <div class="tovars">
             @foreach (var t in Model.Products)
@@ -70,6 +79,7 @@
                     </div>
                 </div>
             }
+            
         </div>
         <div class="sect-pages">
             @if (Model.Pager.CurrentPage > 1)
@@ -105,4 +115,10 @@
             e.preventDefault();
         })
     })
+
+
+
+    function sorselectfun() {
+        document.getElementById("forms").submit();
+    }
 </script>
