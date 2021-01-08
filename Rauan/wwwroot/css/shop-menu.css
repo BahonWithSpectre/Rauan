@@ -441,6 +441,17 @@ a.tovar-name:hover{
 	.sect-nav > ul > li a{
 		font-size: 10px;
 	}
+	.sort-p-block{
+		display:block!important;
+	}
+	.sort-mini-center {
+		text-align:center!important;
+
+	}
+
+	.link-mag {
+		display: none;
+	}
 	.sect-nas{/*---------------SECT-NAS-------------*/
 		justify-content: center;
 		flex-direction: column;
