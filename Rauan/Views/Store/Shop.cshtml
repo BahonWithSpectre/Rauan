@@ -23,7 +23,14 @@
         <ul>
             @foreach (var p in Model.Categories)
             {
-                <li><a href="~/Store/ShopMenu/@p.Id?page=1">@p.Name</a></li>
+                <li>
+                    <a href="~/Store/ShopMenu/@p.Id?page=1">@p.Name</a>
+                    <ul>
+                        <li><a href="~/Store/ShopMenu/@p.Id?page=1">@p.Name</a></li>
+                        <li><a href="~/Store/ShopMenu/@p.Id?page=1">@p.Name</a></li>
+                        <li><a href="~/Store/ShopMenu/@p.Id?page=1">@p.Name</a></li>
+                    </ul>
+                </li>
             }
             @*<li><a href="~/Store/ShopMenu">Автотовары</a></li>
                 <li><a href="~/Store/ShopMenu">Украшения, аксессуары</a></li>

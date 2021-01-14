@@ -88,7 +88,7 @@ i.fa-search {
     display: -ms-flex;
     display: -o-flex;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     -ms-align-items: center;
     align-items: center;
 }
@@ -97,7 +97,29 @@ i.fa-search {
     border: 1px solid #CBD6E8;
     border-bottom: none;
     border-top: none;
+        position: relative;
 }
+    .sect-nav > ul > li ul {
+        width: 100%;
+        min-width: 230px;
+        height: 0;
+        overflow: hidden;
+        list-style: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 10;
+        transition: 0.3s;
+    }
+    .sect-nav > ul > li ul li {
+        width: 100%;
+        background-color: white;
+    }
+
+    .sect-nav > ul > li:hover > ul {
+        height: auto;
+        transition: 0.3s;
+    }
 
 .sect-nav > ul > li:nth-child(odd) {
     border: none;
@@ -118,7 +140,7 @@ i.fa-search {
     align-items: center;
     font-weight: bold;
     font-size: 14px;
-    padding: 10px;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
@@ -253,7 +275,7 @@ a.tovar-name:focus, a.tov-img:focus {
     }
 
     .sect-nav > ul > li a {
-        padding: 5px;
+        padding: 5px 15px;
         font-size: 12px;
     }
 
@@ -298,6 +320,9 @@ a.tovar-name:focus, a.tov-img:focus {
 
             .sect-nav > ul > li:first-child {
                 border-left: none;
+            }
+            .sect-nav > ul > li ul {
+                display: none;
             }
 
     .tovars {
